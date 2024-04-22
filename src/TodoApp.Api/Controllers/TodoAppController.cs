@@ -26,6 +26,7 @@ public class TodoAppController(ITodoInterface todo) : ControllerBase
 
         var response = new CreateTodoResponseDTO
         {
+            Id = createdItem.Id,
             Title = createdItem.Title,
             Description = createdItem.Description,
             IsCompleted = createdItem.IsCompleted,
@@ -34,7 +35,7 @@ public class TodoAppController(ITodoInterface todo) : ControllerBase
 
         };
 
-        return CreatedAtAction(nameof(Create), new { id = createdItem.Id }, response);
+        return CreatedAtAction(nameof(Create), new { id = new Guid() }, response);
     }
 
     /// <summary>
